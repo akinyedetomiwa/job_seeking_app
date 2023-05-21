@@ -22,6 +22,8 @@ import {
 
 import useFetch from '../../hook/useFetch';
 
+const tabs = ["About", "Qualification", "Responsibilities"]
+
 const JobDetails = () => {
   const params = useSearchParams();
   const router = useRouter();
@@ -29,6 +31,8 @@ const JobDetails = () => {
     job_id: params.id,
   });
 const [refreshing, setRefreshing] = useState(false)
+const [activeTab, setActiveTab] = useState([0])
+
 
 const onRefresh = () => {}
   return (
@@ -71,11 +75,16 @@ const onRefresh = () => {}
                 companyLogo={data[0].employer_logo}
                 jobTitle={data[0].job_title}
                 companyName={data[0].employer_name}
-                Location={data[0]. employer_logo}
+                Location={data[0].job_country}
                 
                 />
 
-                <JobTabs/>
+                <JobTabs
+                
+                tabs={tabs}
+                activeTab={activeTab}
+                setActiveTab={setActiveTab}
+                />
             </View>
         )}
       </ScrollView>
