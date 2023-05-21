@@ -32,7 +32,7 @@ const Nearbyjobs = () => {
         ) : error ? (
           <Text>Something went wrong</Text>
         ) : (
-          data?.map(job => (
+          data?.map((job) => (
             <NearbyJobCard
               job={job}
               key={`nearby-job-${job?.job_id}`}
