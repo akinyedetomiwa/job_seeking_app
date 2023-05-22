@@ -15,10 +15,10 @@ import { icons, SIZES } from '../../../constants';
 
 const jobTypes = ['Full-time', 'Part-time', 'Contractor'];
 
-const Welcome = () => {
+const Welcome = ({ searchTerm , setsearchTerm, handleClick}) => {
   const router = useRouter();
   const [activeJobType, setActiveJobType] = useState('Full-time');
-
+// we donot have onChange in react native instead it is onChangeText
   return (
     <View>
       <View style={styles.container}>
@@ -29,13 +29,14 @@ const Welcome = () => {
         <View style={styles.searchWrapper}>
           <TextInput
             style={styles.searchInput}
-            value=""
-            onChange={() => {}}
+            value={searchTerm}
+            onChangeText={(text) => setsearchTerm (term)}
             placeholder="what are you looking for?"
           />
         </View>
+        
 
-        <TouchableOpacity style={styles.searchBtn} onPress={() => {}}>
+        <TouchableOpacity style={styles.searchBtn} onPress={handleClick}>
           <Image
             source={icons.search}
             resizeMode="contain"
